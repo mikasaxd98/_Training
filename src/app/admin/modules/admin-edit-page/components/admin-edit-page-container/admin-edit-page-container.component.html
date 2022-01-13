@@ -1,0 +1,52 @@
+<div *ngIf="getProductModel; else loading">
+  <div class="form">
+    <h2>Edit product</h2>
+    <div class="form-control">
+      <label>Type</label>
+      <select [(ngModel)]="getProductModel.type"
+              [ngClass]="{'custom-invalid': isInvalid() && !getProductModel.type && isCheckRequiredFields}">
+        <option value="phone">Phone</option>
+        <option value="tablet">Tablet</option>
+        <option value="laptop">Laptop</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="name">Name</label>
+      <input id="name" type="name" [(ngModel)]="getProductModel.name" autocomplete="off"
+             [value]="''"
+             [ngClass]="
+           {'custom-invalid': isInvalid()
+           && !this.getProductModel.name && isCheckRequiredFields}">
+    </div>
+    <div class="form-control">
+      <label for="price">Price</label>
+      <input id="price" type="price" [(ngModel)]="getProductModel.price" autocomplete="off"
+             [value]="''"
+             [ngClass]="
+           {'custom-invalid': isInvalid()
+           && !this.getProductModel.price && isCheckRequiredFields}">
+    </div>
+    <div class="form-control">
+      <label>Photo</label>
+      <div>
+        <quill-editor [(ngModel)]="getProductModel.photo"></quill-editor>
+        <small *ngIf="isInvalid() && !this.getProductModel.photo && isCheckRequiredFields">
+          Add photo
+        </small>
+      </div>
+      <div class="form-control">
+        <label>Information</label>
+        <quill-editor [(ngModel)]="getProductModel.information"></quill-editor>
+        <small *ngIf="isInvalid() && !this.getProductModel.information && isCheckRequiredFields">
+          Add information
+        </small>
+      </div>
+      <button type="button" (click)="submit($event)" class="btn btn-primary btn-block">
+        Edit
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <p class="text-center">Loading..</p>
+</ng-template>

@@ -1,0 +1,26 @@
+
+<div class="form">
+  <h2>Log in as administrator</h2>
+  <div class="form-control">
+    <label for="email">Email</label>
+    <input id="email" type="email" [(ngModel)]="authLoginModel.email" autocomplete="off"
+           [value]="''"
+           [ngClass]="
+       {'custom-invalid':(!validateEmail(authLoginModel.email)
+       || isInvalid() && !authLoginModel.email) && isCheckRequiredFields}">
+  </div>
+  <div class="form-control">
+    <label for="password">Password</label>
+    <input id="password" type="password" [(ngModel)]="authLoginModel.password" autocomplete="off"
+           [value]="''"
+           [ngClass]="
+           {'custom-invalid': isInvalid()
+           && this.authLoginModel.password.length < 4 && isCheckRequiredFields}">
+    <small
+      *ngIf=" isInvalid() && this.authLoginModel.password.length < 4 && isCheckRequiredFields">
+      Enter password > 3 symbols</small>
+  </div>
+  <button type="button" (click)="submit($event)" class="btn btn-primary btn-block">
+    Logon
+  </button>
+</div>

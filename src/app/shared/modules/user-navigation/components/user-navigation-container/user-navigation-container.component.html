@@ -1,0 +1,23 @@
+<nav class="navbar bg-dark">
+  <h2>Online shop</h2>
+  <ul>
+    <li routerLinkActive="active">
+      <a (click)="productType('')">All</a>
+    </li>
+    <li routerLinkActive="active">
+      <a (click)="productType('Phone')">Phone</a>
+    </li>
+    <li routerLinkActive="active">
+      <a (click)="productType('Tablet')">Tablet</a>
+    </li>
+    <li routerLinkActive="active">
+      <a (click)="productType('Laptop')">Laptop</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/cart-page']">Cart</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
